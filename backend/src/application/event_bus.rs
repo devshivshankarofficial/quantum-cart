@@ -1,0 +1,1 @@
+//! Event bus placeholder for Kafka/Redpanda integration.

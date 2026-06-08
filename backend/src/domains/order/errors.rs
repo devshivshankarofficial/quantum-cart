@@ -1,0 +1,1 @@
+//! Order-specific error types can be added here as workflows grow.

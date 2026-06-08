@@ -1,0 +1,24 @@
+backend/target/
+target/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+
+# Rust and editor artifacts
+**/*.rs.bk
+.vscode/
+.idea/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Logs and local output
+*.log
+logs/
+tmp/

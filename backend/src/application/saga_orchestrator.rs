@@ -1,0 +1,1 @@
+//! Saga orchestration placeholder for multi-step checkout workflows.

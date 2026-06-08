@@ -1,0 +1,1 @@
+//! Pricing repository contracts will live here.

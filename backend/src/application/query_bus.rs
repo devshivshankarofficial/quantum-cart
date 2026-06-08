@@ -1,0 +1,1 @@
+//! Query bus placeholder for dispatching CQRS read operations.

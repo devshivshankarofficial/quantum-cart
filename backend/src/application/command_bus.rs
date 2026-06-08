@@ -1,0 +1,1 @@
+//! Command bus placeholder for dispatching CQRS write operations.
