@@ -1,5 +1,5 @@
-# Multi-stage Nobel-level build for QuantumCart Backend
-FROM rust:1.78-slim as builder
+# Multi-stage build for QuantumCart Backend
+FROM rust:1.78-slim AS builder
 
 WORKDIR /app
 COPY . .

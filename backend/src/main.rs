@@ -1,5 +1,5 @@
 use axum::{
-    extract::{Json as ExtractJson, Path, State},
+    extract::{DefaultBodyLimit, Json as ExtractJson, Path, State},
     http::{HeaderMap, StatusCode},
     middleware::{self, Next},
     response::{IntoResponse, Response},
@@ -14,8 +14,7 @@ use quantum_cart::shared::models::{CheckoutRequest, Inventory, Product};
 use serde_json::json;
 use sqlx::{postgres::PgPoolOptions, Row};
 use std::{sync::Arc, time::Duration};
-use tower::ServiceBuilder;
-use tower_http::{cors::CorsLayer, limit::RequestBodyLimitLayer, timeout::TimeoutLayer, trace::TraceLayer};
+use tower_http::{cors::CorsLayer, trace::TraceLayer};
 use tracing::{error, info, warn, Level};
 use tracing_subscriber::FmtSubscriber;
 use uuid::Uuid;
@@ -80,14 +79,10 @@ async fn main() {
         .route("/api/v1/plugin/import", post(plugin_import))
         .route("/api/v1/webhooks/vendor", post(vendor_webhook))
         .route("/api/v1/quantum/predict/{product_id}", get(quantum_predict))
-        .layer(
-            ServiceBuilder::new()
-                .layer(TimeoutLayer::new(Duration::from_secs(15)))
-                .layer(TraceLayer::new_for_http())
-                .layer(RequestBodyLimitLayer::new(10 * 1024 * 1024))
-                .layer(CorsLayer::permissive())
-                .layer(middleware::from_fn_with_state(state.clone(), auth_middleware)),
-        )
+        .layer(middleware::from_fn_with_state(state.clone(), auth_middleware))
+        .layer(CorsLayer::permissive())
+        .layer(DefaultBodyLimit::max(10 * 1024 * 1024))
+        .layer(TraceLayer::new_for_http())
         .with_state(state);
 
     let listener = tokio::net::TcpListener::bind("0.0.0.0:3000")
