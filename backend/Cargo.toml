@@ -28,15 +28,14 @@ tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
 
 # Middleware & Resilience
-tower = "0.4"
-tower-http = { version = "0.5", features = ["cors", "trace", "timeout", "fs", "limit"] }
+tower-http = { version = "0.5", features = ["cors", "trace"] }
 
 # Error Handling
 anyhow = "1.0"
 thiserror = "1.0"
 
 # Advanced Security (Nobel-level Zero-Trust)
-jsonwebtoken = "9.3"
+jsonwebtoken = { version = "9.3", default-features = false }
 argon2 = "0.5"
 
 # Quantum-Inspired Optimization (Monte Carlo & Probabilistic for Cart/Inventory)

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: quantum-cart-config
+data:
+  REDIS_URL: redis://redis:6379/
+  REQUIRE_AUTH: "true"
+  RUST_LOG: info
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: quantum-cart-secrets
+type: Opaque
+stringData:
+  DATABASE_URL: postgres://postgres:replace-me@postgres:5432/quantumcart
+  JWT_SECRET: replace-me-with-a-strong-random-secret

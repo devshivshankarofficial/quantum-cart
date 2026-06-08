@@ -59,6 +59,7 @@ flowchart LR
 | Quantum Engine | Demand prediction, dynamic pricing, basket optimization, and confidence scoring |
 | Security | JWT middleware with optional strict auth mode via `REQUIRE_AUTH=true` |
 | Deployment | Dockerfile, Docker Compose, Kubernetes Deployment, Service, and HPA manifests |
+| Supply Chain | GitHub Actions CI, Docker build validation, Dependabot, and cargo-audit workflow |
 
 ## Repository Layout
 
@@ -193,6 +194,7 @@ QuantumCart is ready to evolve into a deeper commerce platform with:
 - Product import pipeline for external commerce systems.
 - Benchmark suite for checkout and prediction latency.
 - CI/CD with GitHub Actions.
+- Dependency vulnerability scanning with `cargo audit`.
 
 ## Low-Space Development Workflow
 

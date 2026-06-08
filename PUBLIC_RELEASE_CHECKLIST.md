@@ -8,6 +8,7 @@ Before making the repository public:
 - [ ] Push to GitHub and wait for CI.
 - [ ] Fix any GitHub Actions failures.
 - [ ] Enable Dependabot alerts and security updates.
+- [ ] Confirm the weekly `Security / Cargo dependency audit` workflow passes.
 - [ ] Enable private vulnerability reporting.
 - [ ] Add the final repository URL to README badges if desired.
 - [ ] Add topics: `rust`, `axum`, `sqlx`, `postgresql`, `redis`, `cqrs`, `event-sourcing`, `docker`, `kubernetes`, `pricing-engine`.
