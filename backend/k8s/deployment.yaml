@@ -14,12 +14,24 @@ spec:
       labels:
         app: quantum-cart-backend
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: api
           image: quantum-cart-backend:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
           envFrom:
             - secretRef:
                 name: quantum-cart-secrets

@@ -1,0 +1,9 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: quantum-cart-backend
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: quantum-cart-backend
